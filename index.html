@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pacific Region Climate Change Dashboard</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Plotly -->
+    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+
+    <!-- Papa Parse -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+
+</head>
+
+<body>
+
+<!-- ================= HERO ================= -->
+
+<header class="hero">
+
+    <div class="hero-content">
+
+        <h1>
+            🌏 Pacific Region Climate Change Dashboard
+        </h1>
+
+        <p>
+
+            An interactive dashboard designed to explore the relationship
+            between carbon emissions, temperature anomalies,
+            disaster impacts, and economic losses across
+            countries in the Pacific region.
+
+        </p>
+
+    </div>
+
+</header>
+
+<!-- ================= MAIN ================= -->
+
+<main class="container">
+
+<!-- ================= BACKGROUND ================= -->
+
+<section class="section">
+
+    <h2>Background</h2>
+
+    <p>
+
+        Climate change has become one of the most significant global
+        challenges, affecting ecosystems, human well-being,
+        and economic sustainability worldwide.
+        Pacific countries are particularly vulnerable due to
+        their geographical characteristics, including
+        extensive coastlines and small island territories.
+
+    </p>
+
+    <p>
+
+        This dashboard presents an interactive data storytelling
+        approach to analyze the relationship between greenhouse
+        gas emissions, temperature anomalies,
+        disaster impacts, and direct economic losses
+        across Pacific countries.
+
+    </p>
+
+</section>
+
+<!-- ================= FILTER ================= -->
+
+<section class="filter-section">
+
+    <div class="filter-card">
+
+        <label>
+
+            Country
+
+        </label>
+
+        <select id="countrySelect">
+
+            <option value="All">
+
+                All Countries
+
+            </option>
+
+        </select>
+
+    </div>
+
+    <div class="filter-card">
+
+        <label>
+
+            Year
+
+        </label>
+
+        <select id="yearSelect">
+
+            <option value="All">
+
+                All Years
+
+            </option>
+
+        </select>
+
+    </div>
+
+</section>
+
+<!-- ================= NAVIGATION ================= -->
+
+<nav class="dashboard-nav">
+
+    <a href="#overview">
+
+        🌏 Overview
+
+    </a>
+
+    <a href="#emission">
+
+        🌫 Carbon Emissions
+
+    </a>
+
+    <a href="#temperature">
+
+        🌡 Temperature
+
+    </a>
+
+    <a href="#impact">
+
+        👥 Disaster Impact
+
+    </a>
+
+    <a href="#economic">
+
+        💰 Economic Loss
+
+    </a>
+
+    <a href="#relation">
+
+        📊 Relationship Analysis
+
+    </a>
+
+    <a href="#summary">
+
+        ✅ Conclusion
+
+    </a>
+
+</nav>
+
+<!-- ====================================================== -->
+<!-- OVERVIEW -->
+<!-- ====================================================== -->
+
+<section id="overview" class="section">
+
+    <h2>Pacific Region Overview</h2>
+
+    <p class="subtitle">
+
+        An overview of climate change conditions across Pacific countries
+        based on the selected dataset.
+
+    </p>
+
+    <!-- KPI -->
+
+    <div class="kpi-container">
+
+        <div class="kpi-card">
+
+            <h3 id="totalEmission">-</h3>
+
+            <p>Total Carbon Emissions</p>
+
+        </div>
+
+        <div class="kpi-card">
+
+            <h3 id="avgTemp">-</h3>
+
+            <p>Average Temperature Anomaly</p>
+
+        </div>
+
+        <div class="kpi-card">
+
+            <h3 id="totalAffected">-</h3>
+
+            <p>Total Population Affected</p>
+
+        </div>
+
+        <div class="kpi-card">
+
+            <h3 id="economicLoss">-</h3>
+
+            <p>Total Economic Loss</p>
+
+        </div>
+
+    </div>
+
+    <!-- MAP -->
+
+    <div class="chart-card">
+
+        <h3>🗺 Pacific Region Map</h3>
+
+        <div id="overviewChart"></div>
+
+    </div>
+
+    <div class="insight-box">
+
+        <h4>Key Insight</h4>
+
+        <p>
+
+            Climate indicators across the Pacific region reveal
+            a consistent upward trend in carbon emissions,
+            accompanied by rising temperature anomalies,
+            increasing disaster impacts,
+            and substantial economic losses.
+
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ====================================================== -->
+<!-- CARBON EMISSIONS -->
+<!-- ====================================================== -->
+
+<section id="emission" class="section">
+
+    <h2>🌫 Carbon Emissions: The Starting Point of Climate Change</h2>
+
+    <p class="subtitle">
+
+        This section illustrates the development of greenhouse gas
+        emissions over time and compares emission levels
+        across Pacific countries.
+
+    </p>
+
+    <div class="chart-grid">
+
+        <!-- Line Chart -->
+
+        <div class="chart-card">
+
+            <h3>Annual Carbon Emission Trend</h3>
+
+            <div id="emissionTrend"></div>
+
+        </div>
+
+        <!-- Ranking -->
+
+        <div class="chart-card">
+
+            <h3>Top Emitting Countries</h3>
+
+            <div id="emissionRank"></div>
+
+        </div>
+
+    </div>
+
+    <div class="chart-card">
+
+        <h3>🗺 Carbon Emission Distribution</h3>
+
+        <div id="emissionStats"></div>
+
+    </div>
+
+    <div class="insight-box">
+
+        <h4>Key Insight</h4>
+
+        <p>
+
+            Several Pacific countries have experienced
+            a significant increase in carbon emissions
+            over recent decades.
+            These visualizations help identify
+            countries with the highest contribution
+            to greenhouse gas emissions.
+
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ====================================================== -->
+<!-- TEMPERATURE -->
+<!-- ====================================================== -->
+
+<section id="temperature" class="section">
+
+    <h2>🌡 Rising Temperature</h2>
+
+    <p class="subtitle">
+
+        Explore the relationship between carbon emissions
+        and changes in both land and sea surface temperatures.
+
+    </p>
+
+    <div class="chart-grid">
+
+        <div class="chart-card">
+
+            <h3>Land Surface Temperature Trend</h3>
+
+            <div id="landTempChart"></div>
+
+        </div>
+
+        <div class="chart-card">
+
+            <h3>Sea Surface Temperature Trend</h3>
+
+            <div id="seaTempChart"></div>
+
+        </div>
+
+    </div>
+
+    <div class="chart-card">
+
+        <h3>Carbon Emissions vs Temperature Anomaly</h3>
+
+        <div id="tempScatter"></div>
+
+    </div>
+
+    <div class="insight-box">
+
+        <h4>Key Insight</h4>
+
+        <p>
+
+            Countries with higher carbon emissions generally
+            experience greater increases in land and sea
+            surface temperature anomalies.
+
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ====================================================== -->
+<!-- DISASTER IMPACT -->
+<!-- ====================================================== -->
+
+<section id="impact" class="section">
+
+    <h2>👥 Disaster Impact on Communities</h2>
+
+    <p class="subtitle">
+
+        This section highlights the number of people
+        directly affected by climate-related disasters.
+
+    </p>
+
+    <div class="chart-grid">
+
+        <div class="chart-card">
+
+            <h3>Most Affected Countries</h3>
+
+            <div id="affectedBar"></div>
+
+        </div>
+
+        <div class="chart-card">
+
+            <h3>Trend of Affected Population</h3>
+
+            <div id="affectedTrend"></div>
+
+        </div>
+
+    </div>
+
+    <div class="insight-box">
+
+        <h4>Key Insight</h4>
+
+        <p>
+
+            Rising temperature anomalies are accompanied
+            by an increasing number of people affected
+            by climate-related disasters across
+            several Pacific countries.
+
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ====================================================== -->
+<!-- ECONOMIC IMPACT -->
+<!-- ====================================================== -->
+
+<section id="economic" class="section">
+
+    <h2>💰 Economic Impact</h2>
+
+    <p class="subtitle">
+
+        Climate change affects not only communities
+        but also causes substantial direct economic losses.
+
+    </p>
+
+    <div class="chart-grid">
+
+        <div class="chart-card">
+
+            <h3>Economic Loss Trend</h3>
+
+            <div id="economicTrend"></div>
+
+        </div>
+
+        <div class="chart-card">
+
+            <h3>Countries with the Highest Economic Losses</h3>
+
+            <div id="economicRank"></div>
+
+        </div>
+
+    </div>
+
+    <div class="chart-card">
+
+        <h3>Economic Loss Treemap</h3>
+
+        <div id="economicTree"></div>
+
+    </div>
+
+    <div class="insight-box">
+
+        <h4>Key Insight</h4>
+
+        <p>
+
+            Direct economic losses continue to increase
+            as climate-related disasters become
+            more frequent and more severe.
+
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ====================================================== -->
+<!-- RELATIONSHIP ANALYSIS -->
+<!-- ====================================================== -->
+
+<section id="relation" class="section">
+
+    <h2>📊 Relationship Analysis</h2>
+
+    <p class="subtitle">
+
+        This section represents the core of the dashboard,
+        illustrating the relationships among the main
+        climate change indicators.
+
+    </p>
+
+    <div class="chart-grid">
+
+        <div class="chart-card">
+
+            <h3>Carbon Emissions vs Temperature Anomaly</h3>
+
+            <div id="scatterEmissionTemp"></div>
+
+        </div>
+
+        <div class="chart-card">
+
+            <h3>Temperature Anomaly vs Affected Population</h3>
+
+            <div id="scatterTempVictim"></div>
+
+        </div>
+
+    </div>
+
+    <div class="chart-card">
+
+        <h3>Temperature Anomaly vs Economic Loss</h3>
+
+        <div id="scatterTempEconomic"></div>
+
+    </div>
+
+    <div class="insight-box">
+
+        <h4>Key Insight</h4>
+
+        <p>
+
+            The visualizations indicate that increasing
+            carbon emissions are associated with higher
+            temperature anomalies.
+            Rising temperatures are also linked
+            to larger affected populations
+            and greater economic losses.
+
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ====================================================== -->
+<!-- CONCLUSION -->
+<!-- ====================================================== -->
+
+<section id="summary" class="section">
+
+    <h2>📝 Conclusion</h2>
+
+    <p class="subtitle">
+
+        Summary of the main findings derived
+        from the climate change analysis.
+
+    </p>
+
+    <div class="summary-grid">
+
+        <div class="summary-card">
+
+            📈
+
+            <h3>Carbon Emissions</h3>
+
+            <p>
+
+                Carbon emissions have shown
+                a continuous upward trend
+                across most Pacific countries.
+
+            </p>
+
+        </div>
+
+        <div class="summary-card">
+
+            🌡️
+
+            <h3>Temperature Change</h3>
+
+            <p>
+
+                Higher emissions are accompanied
+                by increasing land and sea
+                surface temperature anomalies.
+
+            </p>
+
+        </div>
+
+        <div class="summary-card">
+
+            🌪️
+
+            <h3>Disaster Impact</h3>
+
+            <p>
+
+                Countries experiencing greater
+                temperature anomalies tend to have
+                more people affected by disasters.
+
+            </p>
+
+        </div>
+
+        <div class="summary-card">
+
+            💰
+
+            <h3>Economic Loss</h3>
+
+            <p>
+
+                Climate-related disasters continue
+                to generate significant economic
+                losses across the Pacific region.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+<!-- ====================================================== -->
+<!-- FOOTER -->
+<!-- ====================================================== -->
+
+<footer>
+
+    <h3>
+
+        Pacific Region Climate Change Dashboard
+
+    </h3>
+
+    <p>
+
+        Developed as an interactive data visualization platform
+        to analyze the relationships among carbon emissions,
+        temperature anomalies, disaster impacts,
+        and direct economic losses across Pacific countries.
+
+    </p>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
+
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+
+<script src="js/overview.js"></script>
+
+<script src="js/emission.js"></script>
+
+<script src="js/temperature.js"></script>
+
+<script src="js/impact.js"></script>
+
+<script src="js/economy.js"></script>
+
+<script src="js/relation.js"></script>
