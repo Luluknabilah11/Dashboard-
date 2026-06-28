@@ -1,0 +1,452 @@
+/* ============================
+   GOOGLE FONT
+============================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+    background:#eef5fb;
+    color:#333;
+
+}
+
+/* ============================
+   HERO
+============================ */
+
+.hero{
+
+    background:linear-gradient(135deg,#1e88e5,#42a5f5);
+
+    color:white;
+
+    padding:70px 30px;
+
+    text-align:center;
+
+}
+
+.hero h1{
+
+    font-size:42px;
+
+    margin-bottom:15px;
+
+}
+
+.hero p{
+
+    font-size:18px;
+
+    max-width:900px;
+
+    margin:auto;
+
+    line-height:1.8;
+
+}
+
+/* ============================
+   CONTAINER
+============================ */
+
+.container{
+
+    width:92%;
+
+    max-width:1400px;
+
+    margin:auto;
+
+}
+
+/* ============================
+   SECTION
+============================ */
+
+.section{
+
+    background:white;
+
+    margin:40px 0;
+
+    padding:35px;
+
+    border-radius:18px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+.section h2{
+
+    color:#1976d2;
+
+    margin-bottom:10px;
+
+}
+
+.subtitle{
+
+    color:#666;
+
+    margin-bottom:30px;
+
+}
+
+/* ============================
+   FILTER
+============================ */
+
+.filter-section{
+
+    display:flex;
+
+    gap:20px;
+
+    margin:30px 0;
+
+    flex-wrap:wrap;
+
+}
+
+.filter-card{
+
+    background:white;
+
+    padding:20px;
+
+    border-radius:15px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+    flex:1;
+
+}
+
+.filter-card label{
+
+    display:block;
+
+    margin-bottom:10px;
+
+    font-weight:600;
+
+}
+
+.filter-card select{
+
+    width:100%;
+
+    padding:12px;
+
+    border-radius:8px;
+
+    border:1px solid #ddd;
+
+}
+
+/* ============================
+   NAVBAR
+============================ */
+
+.dashboard-nav{
+
+    position:sticky;
+
+    top:0;
+
+    z-index:999;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+    background:white;
+
+    padding:15px;
+
+    margin:30px 0;
+
+    border-radius:15px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+}
+
+.dashboard-nav a{
+
+    text-decoration:none;
+
+    color:#1976d2;
+
+    font-weight:600;
+
+    padding:10px 18px;
+
+    border-radius:8px;
+
+    transition:.3s;
+
+}
+
+.dashboard-nav a:hover{
+
+    background:#1976d2;
+
+    color:white;
+
+}
+
+/* ============================
+   KPI
+============================ */
+
+.kpi-container{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:20px;
+
+    margin:30px 0;
+
+}
+
+.kpi-card{
+
+    background:linear-gradient(135deg,#2196f3,#64b5f6);
+
+    color:white;
+
+    text-align:center;
+
+    padding:25px;
+
+    border-radius:15px;
+
+    transition:.3s;
+
+}
+
+.kpi-card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.kpi-card h3{
+
+    font-size:34px;
+
+}
+
+.kpi-card p{
+
+    margin-top:10px;
+
+}
+
+/* ============================
+   GRID CHART
+============================ */
+
+.chart-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(500px,1fr));
+
+    gap:25px;
+
+    margin-top:25px;
+
+}
+
+/* ============================
+   CHART CARD
+============================ */
+
+.chart-card{
+
+    background:#fafafa;
+
+    border-radius:15px;
+
+    padding:20px;
+
+    margin-top:25px;
+
+    box-shadow:0 4px 10px rgba(0,0,0,.08);
+
+}
+
+.chart-card h3{
+
+    margin-bottom:20px;
+
+    color:#1976d2;
+
+}
+
+/* ukuran grafik */
+
+#pacificMap,
+#emissionTrend,
+#emissionRank,
+#emissionStats,
+#landTempChart,
+#seaTempChart,
+#tempScatter,
+#affectedBar,
+#affectedTrend,
+#economicTrend,
+#economicRank,
+#economicTree,
+#scatterEmissionTemp,
+#scatterTempVictim,
+#scatterTempEconomic{
+
+    width:100%;
+
+    height:450px;
+
+}
+
+/* ============================
+   INSIGHT
+============================ */
+
+.insight-box{
+
+    margin-top:30px;
+
+    background:#e3f2fd;
+
+    border-left:8px solid #2196f3;
+
+    padding:20px;
+
+    border-radius:12px;
+
+}
+
+.insight-box h4{
+
+    color:#1565c0;
+
+    margin-bottom:10px;
+
+}
+
+/* ============================
+   SUMMARY
+============================ */
+
+.summary-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+    gap:25px;
+
+    margin-top:30px;
+
+}
+
+.summary-card{
+
+    background:#fafafa;
+
+    text-align:center;
+
+    padding:25px;
+
+    border-radius:15px;
+
+    box-shadow:0 4px 10px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+}
+
+.summary-card:hover{
+
+    transform:translateY(-6px);
+
+}
+
+.summary-card h3{
+
+    color:#1976d2;
+
+    margin:15px 0;
+
+}
+
+/* ============================
+   FOOTER
+============================ */
+
+footer{
+
+    margin-top:60px;
+
+    background:#1565c0;
+
+    color:white;
+
+    text-align:center;
+
+    padding:40px;
+
+}
+
+footer h3{
+
+    margin-bottom:15px;
+
+}
+
+/* ============================
+   RESPONSIVE
+============================ */
+
+@media(max-width:900px){
+
+.hero h1{
+
+    font-size:30px;
+
+}
+
+.chart-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+.dashboard-nav{
+
+    justify-content:flex-start;
+
+    overflow:auto;
+
+}
+
+}
